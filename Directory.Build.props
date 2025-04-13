@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>Bazario</Company>
+	<RepositoryUrl>https://github.com/Bazar-io/Bazario.AspNetCore.Shared</RepositoryUrl>
+  </PropertyGroup>
+</Project>
