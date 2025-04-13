@@ -208,6 +208,12 @@ PublishScripts/
 *.nuget.props
 *.nuget.targets
 
+# Ignore all files in the NuGetPackages folder
+**/[Nn]uGetPackages/*
+
+# Allow .nupkg files in the NuGetPackages folder
+!**/[Nn]uGetPackages/*.nupkg
+
 # Microsoft Azure Build Output
 csx/
 *.build.csdef

@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+	<PackageId>Bazario.AspNetCore.Shared.Domain</PackageId>
+	<Version>1.0.0</Version>
+	<Description>Shared domain base classes for Bazario ASP.NET Core applications.</Description>
+	<PackageTags>ddd;shared;domain</PackageTags>
   </PropertyGroup>
 
 </Project>
