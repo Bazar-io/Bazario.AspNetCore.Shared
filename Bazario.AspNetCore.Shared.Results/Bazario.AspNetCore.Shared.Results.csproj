@@ -1,7 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  
+	  <PackageId>Bazario.AspNetCore.Shared.Results</PackageId>
+	  <Version>1.0.0</Version>
+	  <Description>Shared results base classes for Bazario ASP.NET Core applications.</Description>
+	  <PackageTags>result-pattern;shared</PackageTags>
   </PropertyGroup>
 
 </Project>
