@@ -2,15 +2,18 @@
 
 	<PropertyGroup>
 		<PackageId>Bazario.AspNetCore.Shared.Infrastructure</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<Description>Contains shared infrastructure components and cross-cutting concerns for microservices and other reusable setup utilities.</Description>
-		<PackageTags>mapper;mediatr;validation;shared;infrastructure</PackageTags>
+		<PackageTags>options;mapper;mediatr;validation;shared;infrastructure</PackageTags>
 	</PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
