@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<PackageId>Bazario.AspNetCore.Shared.Application</PackageId>
+		<Version>1.0.0</Version>
+		<Description>Contains shared application components for Bazario ASP.NET Core applications.</Description>
+		<PackageTags>mapper;mediatr;validation;shared;application</PackageTags>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="11.11.0" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+		<PackageReference Include="MediatR" Version="12.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Bazario.AspNetCore.Shared.Results\Bazario.AspNetCore.Shared.Results.csproj" />
+	</ItemGroup>
+</Project>
