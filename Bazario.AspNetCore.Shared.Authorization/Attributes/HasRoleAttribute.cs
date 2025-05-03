@@ -1,7 +1,7 @@
-﻿using Bazario.AspNetCore.Shared.Auth.Roles;
+﻿using Bazario.AspNetCore.Shared.Authorization.Roles;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Bazario.AspNetCore.Shared.Auth.Attributes
+namespace Bazario.AspNetCore.Shared.Authorization.Attributes
 {
     public sealed class HasRoleAttribute : AuthorizeAttribute
     {

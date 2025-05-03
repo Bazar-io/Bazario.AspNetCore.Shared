@@ -1,15 +1,15 @@
-﻿using Bazario.AspNetCore.Shared.Auth.Roles;
+﻿using Bazario.AspNetCore.Shared.Authorization.Roles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Bazario.AspNetCore.Shared.Auth.DependencyInjection
+namespace Bazario.AspNetCore.Shared.Authorization.DependencyInjection
 {
     public static class AuthorizationExtensions
     {
         public static IServiceCollection ConfigureAuthorization(
             this IServiceCollection services)
         {
-            services.AddAuthorization(options => options.ConfigureRoles());
+            services.AddAuthorizationCore(options => options.ConfigureRoles());
 
             return services;
         }

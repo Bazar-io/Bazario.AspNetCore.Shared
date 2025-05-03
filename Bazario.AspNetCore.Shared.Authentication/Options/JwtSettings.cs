@@ -1,7 +1,7 @@
 ﻿using Bazario.AspNetCore.Shared.Infrastructure.Options;
 using System.ComponentModel.DataAnnotations;
 
-namespace Bazario.AspNetCore.Shared.Auth.Options
+namespace Bazario.AspNetCore.Shared.Authentication.Options
 {
     public class JwtSettings : IAppOptions
     {

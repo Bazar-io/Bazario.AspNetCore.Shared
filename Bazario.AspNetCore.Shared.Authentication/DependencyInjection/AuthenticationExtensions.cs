@@ -1,4 +1,4 @@
-﻿using Bazario.AspNetCore.Shared.Auth.Options;
+﻿using Bazario.AspNetCore.Shared.Authentication.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Bazario.AspNetCore.Shared.Infrastructure.Options;
 
-namespace Bazario.AspNetCore.Shared.Auth.DependencyInjection
+namespace Bazario.AspNetCore.Shared.Authentication.DependencyInjection
 {
     public static class AuthenticationExtensions
     {
