@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Bazario.AspNetCore.Shared.Infrastructure.Mappers.DependencyInjection
+namespace Bazario.AspNetCore.Shared.Application.Mappers.DependencyInjection
 {
     public static class MapperExtensions
     {

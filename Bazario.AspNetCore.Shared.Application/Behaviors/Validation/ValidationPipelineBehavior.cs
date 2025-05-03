@@ -2,7 +2,7 @@
 using FluentValidation;
 using MediatR;
 
-namespace Bazario.AspNetCore.Shared.Infrastructure.Behaviors.Validation
+namespace Bazario.AspNetCore.Shared.Application.Behaviors.Validation
 {
     public sealed class ValidationPipelineBehavior<TRequest, TResponse>
         : IPipelineBehavior<TRequest, TResponse>

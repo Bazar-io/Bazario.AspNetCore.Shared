@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Bazario.AspNetCore.Shared.Infrastructure.MediatR.DependencyInjection
+namespace Bazario.AspNetCore.Shared.Application.MediatR.DependencyInjection
 {
     public static class MediatRExtensions
     {

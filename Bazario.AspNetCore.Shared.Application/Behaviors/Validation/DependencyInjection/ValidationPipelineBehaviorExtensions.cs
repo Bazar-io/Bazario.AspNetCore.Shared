@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Bazario.AspNetCore.Shared.Infrastructure.Behaviors.Validation.DependencyInjection
+namespace Bazario.AspNetCore.Shared.Application.Behaviors.Validation.DependencyInjection
 {
     public static class ValidationPipelineBehaviorExtensions
     {

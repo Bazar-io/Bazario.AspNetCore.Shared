@@ -1,4 +1,4 @@
-﻿namespace Bazario.AspNetCore.Shared.Infrastructure.Mappers
+﻿namespace Bazario.AspNetCore.Shared.Application.Mappers
 {
     public abstract class Mapper<TSource, TDestination>
     {
