@@ -20,7 +20,7 @@ namespace Bazario.AspNetCore.Shared.Domain.Common.Users.FirstNames
             yield return Value;
         }
 
-        public static Result<FirstName> Create(string? value)
+        public static Result<FirstName> Create(string value)
         {
             var validationResult = ValidateInputValue(value);
 
@@ -32,7 +32,7 @@ namespace Bazario.AspNetCore.Shared.Domain.Common.Users.FirstNames
             return new FirstName(value!);
         }
 
-        private static Result ValidateInputValue(string? value)
+        private static Result ValidateInputValue(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {

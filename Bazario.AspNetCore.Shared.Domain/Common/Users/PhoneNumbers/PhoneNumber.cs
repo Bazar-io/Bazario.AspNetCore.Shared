@@ -18,7 +18,7 @@ namespace Bazario.AspNetCore.Shared.Domain.Common.Users.PhoneNumbers
         public static bool IsInvalidFormat(string value) =>
             !Regex.IsMatch(value, FormatValidationPattern);
 
-        public static Result<PhoneNumber> Create(string? phoneNumber)
+        public static Result<PhoneNumber> Create(string phoneNumber)
         {
             var validationResult = ValidatePhoneNumber(phoneNumber);
 
@@ -30,7 +30,7 @@ namespace Bazario.AspNetCore.Shared.Domain.Common.Users.PhoneNumbers
             return new PhoneNumber(phoneNumber!);
         }
 
-        private static Result ValidatePhoneNumber(string? phoneNumber)
+        private static Result ValidatePhoneNumber(string phoneNumber)
         {
             if (string.IsNullOrWhiteSpace(phoneNumber))
             {
