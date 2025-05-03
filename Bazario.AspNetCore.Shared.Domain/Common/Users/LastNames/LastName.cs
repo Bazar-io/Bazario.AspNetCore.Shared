@@ -21,7 +21,7 @@ namespace Bazario.AspNetCore.Shared.Domain.Common.Users.LastNames
             yield return Value;
         }
 
-        public static Result<LastName> Create(string? value)
+        public static Result<LastName> Create(string value)
         {
             var validationResult = ValidateInputValue(value);
 
@@ -33,7 +33,7 @@ namespace Bazario.AspNetCore.Shared.Domain.Common.Users.LastNames
             return new LastName(value!);
         }
 
-        private static Result ValidateInputValue(string? value)
+        private static Result ValidateInputValue(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
