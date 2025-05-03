@@ -1,4 +1,4 @@
-﻿namespace Bazario.AspNetCore.Shared.Domain.Persistence
+﻿namespace Bazario.AspNetCore.Shared.Application.Abstractions.Data
 {
     public interface IUnitOfWork
     {
