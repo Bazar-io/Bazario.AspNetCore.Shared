@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Bazario.AspNetCore.Shared.Web.DependencyInjection
+namespace Bazario.AspNetCore.Shared.Infrastructure.CORS.DependencyInjection
 {
     public static class CorsExtensions
     {
