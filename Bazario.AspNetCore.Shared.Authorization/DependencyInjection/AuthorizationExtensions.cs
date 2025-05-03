@@ -1,4 +1,4 @@
-﻿using Bazario.AspNetCore.Shared.Authorization.Roles;
+﻿using Bazario.AspNetCore.Shared.Domain.Common.Users.Roles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 

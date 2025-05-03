@@ -1,4 +1,4 @@
-﻿namespace Bazario.AspNetCore.Shared.Authorization.Roles
+﻿namespace Bazario.AspNetCore.Shared.Domain.Common.Users.Roles
 {
     public enum Role
     {
