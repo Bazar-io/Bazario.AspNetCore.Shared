@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bazario.AspNetCore.Shared.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bazario.AspNetCore.Shared.Authorization", "Bazario.AspNetCore.Shared.Authorization\Bazario.AspNetCore.Shared.Authorization.csproj", "{2DC38248-826B-488A-9B92-7B53902D888B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bazario.AspNetCore.Shared.Options", "Bazario.AspNetCore.Shared.Options\Bazario.AspNetCore.Shared.Options.csproj", "{16AC68E2-30B4-4AA1-A91D-78EC54E09485}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,18 @@ Global
 		{2DC38248-826B-488A-9B92-7B53902D888B}.Release|x64.Build.0 = Release|Any CPU
 		{2DC38248-826B-488A-9B92-7B53902D888B}.Release|x86.ActiveCfg = Release|Any CPU
 		{2DC38248-826B-488A-9B92-7B53902D888B}.Release|x86.Build.0 = Release|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Debug|x64.Build.0 = Debug|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Debug|x86.Build.0 = Debug|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Release|x64.ActiveCfg = Release|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Release|x64.Build.0 = Release|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Release|x86.ActiveCfg = Release|Any CPU
+		{16AC68E2-30B4-4AA1-A91D-78EC54E09485}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
