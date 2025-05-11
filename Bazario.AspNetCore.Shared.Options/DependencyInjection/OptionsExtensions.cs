@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using System.Reflection;
 
-namespace Bazario.AspNetCore.Shared.Infrastructure.Options.DependencyInjection
+namespace Bazario.AspNetCore.Shared.Options.DependencyInjection
 {
     public static partial class OptionsExtensions
     {

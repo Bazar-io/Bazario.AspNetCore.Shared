@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Bazario.AspNetCore.Shared.Infrastructure.Options;
+using Bazario.AspNetCore.Shared.Options;
 
 namespace Bazario.AspNetCore.Shared.Authentication.DependencyInjection
 {
