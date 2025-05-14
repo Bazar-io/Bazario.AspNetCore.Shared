@@ -5,6 +5,6 @@
         string Email,
         string FirstName,
         string LastName,
-        DateTime BirthDate,
+        DateOnly BirthDate,
         string PhoneNumber);
 }
