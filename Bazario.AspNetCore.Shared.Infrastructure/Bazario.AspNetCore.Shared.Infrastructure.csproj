@@ -2,21 +2,26 @@
 
 	<PropertyGroup>
 		<PackageId>Bazario.AspNetCore.Shared.Infrastructure</PackageId>
-		<Version>1.2.0</Version>
+		<Version>1.3.0</Version>
 		<Description>Contains shared infrastructure components and cross-cutting concerns for microservices and other reusable setup utilities.</Description>
-		<PackageTags>cors;outbox;shared;infrastructure</PackageTags>
+		<PackageTags>background jobs;message broker;cors;outbox;shared;infrastructure</PackageTags>
 	</PropertyGroup>
 
   <ItemGroup>
+	<PackageReference Include="MassTransit" Version="8.4.1" />
+	<PackageReference Include="MassTransit.RabbitMQ" Version="8.4.1" />
 	<PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.3.0" />
 	<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Quartz" Version="3.14.0" />
+    <PackageReference Include="Quartz.Extensions.Hosting" Version="3.14.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Bazario.AspNetCore.Shared.Application\Bazario.AspNetCore.Shared.Application.csproj" />
     <ProjectReference Include="..\Bazario.AspNetCore.Shared.Domain\Bazario.AspNetCore.Shared.Domain.csproj" />
+    <ProjectReference Include="..\Bazario.AspNetCore.Shared.Options\Bazario.AspNetCore.Shared.Options.csproj" />
   </ItemGroup>
 
 </Project>
