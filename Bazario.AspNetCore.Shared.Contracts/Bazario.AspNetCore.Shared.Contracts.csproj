@@ -1,7 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  
-  </PropertyGroup>
+	<PropertyGroup>
+		<PackageId>Bazario.AspNetCore.Shared.Contracts</PackageId>
+		<Version>1.0.0</Version>
+		<Description>Contracts classes used for Bazario ASP.NET Core applications.</Description>
+		<PackageTags>shared;contracts</PackageTags>
+	</PropertyGroup>
 
 </Project>
