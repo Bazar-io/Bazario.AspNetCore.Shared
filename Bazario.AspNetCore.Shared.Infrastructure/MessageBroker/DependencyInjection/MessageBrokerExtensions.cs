@@ -1,59 +1,82 @@
-﻿using Bazario.AspNetCore.Shared.Application.Abstractions.EventBus;
+﻿using Bazario.AspNetCore.Shared.Abstractions.MessageBroker;
+using Bazario.AspNetCore.Shared.Infrastructure.Abstractions;
 using Bazario.AspNetCore.Shared.Infrastructure.MessageBroker.Options;
 using Bazario.AspNetCore.Shared.Options;
-using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+using RabbitMQ.Client;
 
 namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker.DependencyInjection
 {
     public static class MessageBrokerExtensions
     {
         public static IServiceCollection AddMessageBroker(
-            this IServiceCollection services,
-            Assembly assembly)
+            this IServiceCollection services)
         {
             var messageBrokerSettings = services.BuildServiceProvider().GetOptions<MessageBrokerSettings>();
 
-            services.ConfigureMassTransit(
-                assembly,
-                messageBrokerSettings);
+            services.AddConnectionFactory(messageBrokerSettings);
 
-            services.AddTransient<IEventBus, EventBus>();
+            services.ConfigureRabbitMqConnection();
+
+            services.ConfigureRabbitMqConnection();
+
+            services.ConfigureMessagePublisher();
 
             return services;
         }
 
-        private static IServiceCollection ConfigureMassTransit(
+        public static IServiceCollection AddMessageConsumer<TMessage, TMessageConsumer>(
+            this IServiceCollection services)
+            where TMessage : class
+            where TMessageConsumer : class, IMessageConsumer<TMessage>
+        {
+            services.AddScoped<IMessageConsumer<TMessage>, TMessageConsumer>();
+            services.AddHostedService<MessageConsumerHostedService<TMessage>>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddConnectionFactory(
             this IServiceCollection services,
-            Assembly assembly,
             MessageBrokerSettings settings)
         {
-            services.AddMassTransit(busConfigurator =>
+            services.AddSingleton<IConnectionFactory>(sp =>
             {
-                busConfigurator.SetKebabCaseEndpointNameFormatter();
-
-                busConfigurator.AddConsumers(assembly);
-
-                busConfigurator.UsingRabbitMq((context, cfg) =>
+                var factory = new ConnectionFactory
                 {
-                    cfg.Host(new Uri(settings.Host), h =>
-                    {
-                        h.Username(settings.User);
-                        h.Password(settings.Password);
-                    });
+                    HostName = settings.Host,
+                    Port = settings.Port,
+                    UserName = settings.Username,
+                    Password = settings.Password,
+                };
 
-                    if (settings.EnableRetryPolicy)
-                    {
-                        cfg.UseMessageRetry(
-                            r => r.Interval(
-                                settings.RetryCount,
-                                TimeSpan.FromMilliseconds(settings.RetryIntervalMilliseconds)));
-                    }
-
-                    cfg.ConfigureEndpoints(context);
-                });
+                return factory;
             });
+
+            return services;
+        }
+
+        private static IServiceCollection ConfigureRabbitMqConnection(
+            this IServiceCollection services)
+        {
+            services.AddSingleton<IRabbitMqConnection>(sp =>
+            {
+                var factory = sp.GetRequiredService<IConnectionFactory>();
+
+                var connection = new RabbitMqConnection(factory);
+
+                connection.InitializeAsync().GetAwaiter().GetResult();
+
+                return connection;
+            });
+
+            return services;
+        }
+
+        private static IServiceCollection ConfigureMessagePublisher(
+            this IServiceCollection services)
+        {
+            services.AddSingleton<IMessagePublisher, MessagePublisher>();
 
             return services;
         }
