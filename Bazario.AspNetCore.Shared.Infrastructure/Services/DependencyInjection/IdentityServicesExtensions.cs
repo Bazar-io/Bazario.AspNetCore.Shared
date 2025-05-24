@@ -1,4 +1,4 @@
-﻿using Bazario.AspNetCore.Shared.Application.Abstractions.Identity;
+﻿using Bazario.AspNetCore.Shared.Infrastructure.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bazario.AspNetCore.Shared.Infrastructure.Services.DependencyInjection

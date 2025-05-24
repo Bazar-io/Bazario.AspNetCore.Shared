@@ -1,4 +1,4 @@
-﻿namespace Bazario.AspNetCore.Shared.Application.Abstractions.Identity
+﻿namespace Bazario.AspNetCore.Shared.Infrastructure.Abstractions
 {
     public interface IUserContextService
     {
