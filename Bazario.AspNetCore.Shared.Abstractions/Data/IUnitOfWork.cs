@@ -1,4 +1,4 @@
-﻿namespace Bazario.AspNetCore.Shared.Application.Abstractions.Data
+﻿namespace Bazario.AspNetCore.Shared.Abstractions.Data
 {
     public interface IUnitOfWork
     {
