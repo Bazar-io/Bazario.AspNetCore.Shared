@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<PackageId>Bazario.AspNetCore.Shared.Application</PackageId>
-		<Version>1.0.2</Version>
+		<Version>1.1.0</Version>
 		<Description>Contains shared application components for Bazario ASP.NET Core applications.</Description>
 		<PackageTags>mapper;mediatr;validation;shared;application</PackageTags>
 	</PropertyGroup>
@@ -12,9 +12,11 @@
 		<PackageReference Include="FluentValidation" Version="12.0.0" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
 		<PackageReference Include="MediatR" Version="12.5.0" />
+		<PackageReference Include="Scrutor" Version="6.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Bazario.AspNetCore.Shared.Abstractions\Bazario.AspNetCore.Shared.Abstractions.csproj" />
 		<ProjectReference Include="..\Bazario.AspNetCore.Shared.Results\Bazario.AspNetCore.Shared.Results.csproj" />
 	</ItemGroup>
 </Project>
