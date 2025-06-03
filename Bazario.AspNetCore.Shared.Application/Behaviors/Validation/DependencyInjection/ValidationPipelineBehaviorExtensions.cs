@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using Bazario.AspNetCore.Shared.Abstractions.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bazario.AspNetCore.Shared.Application.Behaviors.Validation.DependencyInjection
@@ -8,7 +8,9 @@ namespace Bazario.AspNetCore.Shared.Application.Behaviors.Validation.DependencyI
         public static IServiceCollection AddValidationPipelineBehavior(
             this IServiceCollection services)
         {
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+            services.Decorate(typeof(IQueryHandler<,>), typeof(ValidationDecorator.QueryHandler<,>));
+            services.Decorate(typeof(ICommandHandler<>), typeof(ValidationDecorator.CommandHandler<>));
+            services.Decorate(typeof(ICommandHandler<,>), typeof(ValidationDecorator.CommandHandler<,>));
 
             return services;
         }
