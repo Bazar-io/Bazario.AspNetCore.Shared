@@ -1,6 +1,7 @@
 ﻿using Bazario.AspNetCore.Shared.Abstractions.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 using Scrutor;
+using System.Reflection;
 
 namespace Bazario.AspNetCore.Shared.Application.Messaging.DependencyInjection
 {
@@ -8,10 +9,10 @@ namespace Bazario.AspNetCore.Shared.Application.Messaging.DependencyInjection
     {
         public static IServiceCollection AddMessaging(
             this IServiceCollection services,
-            Type assemblyType)
+            Assembly assembly)
         {
             services.Scan(scan =>
-                scan.FromAssembliesOf(assemblyType)
+                scan.FromAssemblies(assembly)
                     .AddHandlersOfType(typeof(IQueryHandler<,>))
                     .AddHandlersOfType(typeof(ICommand))
                     .AddHandlersOfType(typeof(ICommandHandler<,>)));
