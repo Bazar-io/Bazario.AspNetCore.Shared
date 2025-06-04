@@ -1,21 +1,19 @@
-﻿using Bazario.AspNetCore.Shared.Abstractions.Messaging;
+﻿using Bazario.AspNetCore.Shared.Abstractions.DomainEvents;
 using Microsoft.Extensions.DependencyInjection;
 using Scrutor;
 using System.Reflection;
 
-namespace Bazario.AspNetCore.Shared.Application.Messaging.DependencyInjection
+namespace Bazario.AspNetCore.Shared.Application.DomainEvents.DependencyInjection
 {
-    public static class MessagingExtensions
+    public static class DomainEventsExtensions
     {
-        public static IServiceCollection AddMessaging(
+        public static IServiceCollection AddDomainEventHandlers(
             this IServiceCollection services,
             Assembly assembly)
         {
             services.Scan(scan =>
                 scan.FromAssemblies(assembly)
-                    .AddHandlersOfType(typeof(IQueryHandler<,>))
-                    .AddHandlersOfType(typeof(ICommandHandler<>))
-                    .AddHandlersOfType(typeof(ICommandHandler<,>)));
+                    .AddHandlersOfType(typeof(IDomainEventHandler<>)));
 
             return services;
         }
