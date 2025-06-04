@@ -1,8 +1,9 @@
-﻿using Bazario.AspNetCore.Shared.Domain;
+﻿using Bazario.AspNetCore.Shared.Abstractions.DomainEvents;
+using Bazario.AspNetCore.Shared.Domain;
+using Bazario.AspNetCore.Shared.Infrastructure.DomainEvents;
 using Bazario.AspNetCore.Shared.Infrastructure.Persistence;
 using Bazario.AspNetCore.Shared.Infrastructure.Persistence.Outbox;
 using Bazario.AspNetCore.Shared.Infrastructure.Persistence.Outbox.Options;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -16,18 +17,18 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.BackgroundJobs
         where DbContext : Microsoft.EntityFrameworkCore.DbContext, IHasOutboxMessages
     {
         private readonly DbContext _context;
-        private readonly IPublisher _publisher;
+        private readonly IDomainEventDispatcher _domainEventDispatcher;
         private readonly OutboxSettings _settings;
         private readonly ILogger<ProcessOutboxMessagesJob<DbContext>> _logger;
 
         public ProcessOutboxMessagesJob(
             DbContext context,
-            IPublisher publisher,
+            IDomainEventDispatcher domainEventDispatcher,
             IOptions<OutboxSettings> settings,
             ILogger<ProcessOutboxMessagesJob<DbContext>> logger)
         {
             _context = context;
-            _publisher = publisher;
+            _domainEventDispatcher = domainEventDispatcher;
             _settings = settings.Value;
             _logger = logger;
         }
@@ -82,7 +83,7 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.BackgroundJobs
 
             foreach (var message in messages)
             {
-                DomainEvent? domainEvent = DeserializeDomainEvent(message.Content);
+                IDomainEvent? domainEvent = DeserializeDomainEvent(message.Content);
                 if (domainEvent is null)
                 {
                     _logger.LogError("Deserialization failed for message ID {MessageId}.", message.Id);
@@ -114,10 +115,10 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.BackgroundJobs
 
         private Task PublishDomainEvent(
             OutboxMessage message,
-            DomainEvent domainEvent,
+            IDomainEvent domainEvent,
             CancellationToken cancellationToken)
         {
-            return _publisher.Publish(
+            return _domainEventDispatcher.DispatchAsync(
                 domainEvent,
                 cancellationToken)
                 .ContinueWith(task =>

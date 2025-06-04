@@ -1,4 +1,5 @@
-﻿using Bazario.AspNetCore.Shared.Infrastructure.Persistence;
+﻿using Bazario.AspNetCore.Shared.Infrastructure.DomainEvents;
+using Bazario.AspNetCore.Shared.Infrastructure.Persistence;
 using Bazario.AspNetCore.Shared.Infrastructure.Persistence.Outbox.Options;
 using Bazario.AspNetCore.Shared.Options;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,6 +49,8 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.BackgroundJobs.DependencyInje
                                 .WithIntervalInSeconds(
                                     outboxSettings.ProcessIntervalInSeconds)
                                 .RepeatForever()));
+
+            services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
         }
     }
 }
