@@ -1,4 +1,4 @@
-﻿namespace Bazario.AspNetCore.Shared.Infrastructure.Abstractions
+﻿namespace Bazario.AspNetCore.Shared.Abstractions
 {
     public interface IUserContextService
     {
