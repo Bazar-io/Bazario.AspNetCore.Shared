@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<PackageId>Bazario.AspNetCore.Shared.Api</PackageId>
+	<Version>1.0.0</Version>
+	<Description>Shared class library for api related concerns in Bazario ASP.NET Core applications.</Description>
+	<PackageTags>problem details;middleware;api;shared;</PackageTags>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\Bazario.AspNetCore.Shared.Results\Bazario.AspNetCore.Shared.Results.csproj" />
+  </ItemGroup>
+
+</Project>
