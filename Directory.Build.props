@@ -7,4 +7,12 @@
     <Company>Bazario</Company>
 	<RepositoryUrl>https://github.com/Bazar-io/Bazario.AspNetCore.Shared</RepositoryUrl>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageIcon>logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\logo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>
