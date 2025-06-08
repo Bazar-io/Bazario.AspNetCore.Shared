@@ -1,4 +1,4 @@
-﻿using Bazario.AspNetCore.Shared.Infrastructure.Abstractions;
+﻿using Bazario.AspNetCore.Shared.Abstractions;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
