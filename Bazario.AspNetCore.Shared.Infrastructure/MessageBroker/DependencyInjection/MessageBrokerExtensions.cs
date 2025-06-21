@@ -18,8 +18,6 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker.DependencyInjec
 
             services.ConfigureRabbitMqConnection();
 
-            services.ConfigureRabbitMqConnection();
-
             services.ConfigureMessagePublisher();
 
             return services;

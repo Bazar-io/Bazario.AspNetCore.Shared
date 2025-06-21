@@ -8,8 +8,8 @@ using System.Text.Json;
 
 namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker
 {
-    internal sealed class MessagePublisher(IRabbitMqConnection rabbitMqConnection,
-        ILogger<MessagePublisher> logger)
+    internal sealed class MessagePublisher(
+        IRabbitMqConnection rabbitMqConnection)
         : IMessagePublisher
     {
         public async Task PublishAsync<TMessage>(

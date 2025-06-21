@@ -2,8 +2,6 @@
 {
     public sealed record UserUpdatedForIdentityServiceEvent(
         Guid UserId,
-        string FirstName,
-        string LastName,
         string Email,
         string PhoneNumber);
 }
