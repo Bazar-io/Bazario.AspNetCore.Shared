@@ -24,10 +24,14 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker.DependencyInjec
         }
 
         public static IServiceCollection AddMessageConsumer<TMessage, TMessageConsumer>(
-            this IServiceCollection services)
+            this IServiceCollection services,
+            MessageBrokerExchangeType exchangeType = MessageBrokerExchangeType.Direct)
             where TMessage : class
             where TMessageConsumer : class, IMessageConsumer<TMessage>
         {
+            // Register the message consumer exchange type settings
+            services.AddSingleton(sp => new MessageConsumerExchangeTypeSettings<TMessage>(exchangeType));
+
             services.AddScoped<IMessageConsumer<TMessage>, TMessageConsumer>();
             services.AddHostedService<MessageConsumerHostedService<TMessage>>();
 

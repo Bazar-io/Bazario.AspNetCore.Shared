@@ -1,6 +1,7 @@
 ﻿using Bazario.AspNetCore.Shared.Abstractions.MessageBroker;
 using Bazario.AspNetCore.Shared.Infrastructure.Abstractions;
 using Bazario.AspNetCore.Shared.Infrastructure.MessageBroker.Helpers;
+using Bazario.AspNetCore.Shared.Infrastructure.MessageBroker.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -15,18 +16,21 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker
         : BackgroundService
         where TMessage : class
     {
-        private readonly IRabbitMqConnection _rabbitMqconnection;
+        private readonly MessageConsumerExchangeTypeSettings<TMessage> _exchangeTypeSettings;
+        private readonly IRabbitMqConnection _rabbitMqConnection;
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ILogger<MessageConsumerHostedService<TMessage>> _logger;
 
         private IChannel? _channel;
 
         public MessageConsumerHostedService(
-            IRabbitMqConnection rabbitMqconnection,
+            MessageConsumerExchangeTypeSettings<TMessage> exchangeTypeSettings,
+            IRabbitMqConnection rabbitMqConnection,
             IServiceScopeFactory serviceScopeFactory,
             ILogger<MessageConsumerHostedService<TMessage>> logger)
         {
-            _rabbitMqconnection = rabbitMqconnection;
+            _exchangeTypeSettings = exchangeTypeSettings;
+            _rabbitMqConnection = rabbitMqConnection;
             _serviceScopeFactory = serviceScopeFactory;
             _logger = logger;
         }
@@ -34,18 +38,12 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker
         protected override async Task ExecuteAsync(
             CancellationToken stoppingToken)
         {
-            _channel = await _rabbitMqconnection.Connection
+            _channel = await _rabbitMqConnection.Connection
                 .CreateChannelAsync(cancellationToken: stoppingToken);
 
-            var queueName = KebabCaseFormater.ToKebabCase<TMessage>();
-
-            await _channel.QueueDeclareAsync(
-                queue: queueName,
-                durable: true,
-                exclusive: false,
-                autoDelete: false,
-                arguments: null,
-                cancellationToken: stoppingToken);
+            var routingKey = KebabCaseFormater.ToKebabCase<TMessage>();
+            var uniqueQueueName = $"{routingKey}-{Guid.NewGuid()}";
+            await DeclareDestinationAsync(_channel, routingKey, uniqueQueueName, stoppingToken);
 
             var consumer = new AsyncEventingBasicConsumer(_channel);
             consumer.ReceivedAsync += async (sender, eventArgs) =>
@@ -66,7 +64,7 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker
                 {
                     _logger.LogError("Failed to deserialize message: {Message}", ex.Message);
                 }
-                
+
                 if (deserializedMessage is null)
                 {
                     // Log the error and do not acknowledge the message
@@ -99,6 +97,13 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker
                     cancellationToken: stoppingToken);
             };
 
+            var queueName = _exchangeTypeSettings.ExchangeType switch
+            {
+                MessageBrokerExchangeType.Direct => routingKey,
+                MessageBrokerExchangeType.Fanout => uniqueQueueName,
+                _ => throw new NotSupportedException($"Exchange type {_exchangeTypeSettings.ExchangeType} is not supported.")
+            };
+
             await _channel.BasicConsumeAsync(
                 queue: queueName,
                 autoAck: false,
@@ -107,6 +112,64 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker
 
             // Keep the service running until stopped
             await Task.Delay(Timeout.Infinite, stoppingToken);
+        }
+
+        private async Task DeclareDestinationAsync(
+            IChannel channel,
+            string routingKey,
+            string uniqueQueueName,
+            CancellationToken stoppingToken)
+        {
+            switch (_exchangeTypeSettings.ExchangeType)
+            {
+                case MessageBrokerExchangeType.Direct:
+                    await HandleDirectExchangeAsync(channel, routingKey, stoppingToken);
+                    break;
+                case MessageBrokerExchangeType.Fanout:
+                    await HandleFanoutExchangeAsync(channel, routingKey, uniqueQueueName, stoppingToken);
+                    break;
+                default:
+                    _logger.LogError("Unsupported exchange type: {ExchangeType}", _exchangeTypeSettings.ExchangeType);
+                    throw new NotSupportedException($"Exchange type {_exchangeTypeSettings.ExchangeType} is not supported.");
+            }
+        }
+
+        private static async Task HandleDirectExchangeAsync(
+            IChannel channel,
+            string routingKey,
+            CancellationToken stoppingToken)
+        {
+            await channel.QueueDeclareAsync(
+                queue: routingKey,
+                durable: true,
+                exclusive: false,
+                autoDelete: false,
+                cancellationToken: stoppingToken);
+        }
+
+        private static async Task HandleFanoutExchangeAsync(
+            IChannel channel,
+            string routingKey,
+            string uniqueQueueName,
+            CancellationToken stoppingToken)
+        {
+            await channel.ExchangeDeclareAsync(
+                exchange: routingKey,
+                durable: true,
+                autoDelete: false,
+                type: ExchangeType.Fanout,
+                cancellationToken: stoppingToken);
+            await channel.QueueDeclareAsync(
+                queue: uniqueQueueName,
+                durable: true,
+                exclusive: false,
+                autoDelete: false,
+                cancellationToken: stoppingToken);
+            await channel.QueueBindAsync(
+                queue: uniqueQueueName,
+                exchange: routingKey,
+                routingKey: string.Empty,
+                cancellationToken: stoppingToken);
         }
 
         public override async Task StopAsync(
