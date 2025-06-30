@@ -2,7 +2,7 @@
 
    <PropertyGroup>
 	 <PackageId>Bazario.AspNetCore.Shared.Infrastructure</PackageId>
-	 <Version>1.4.2</Version>
+	 <Version>1.4.3</Version>
 	 <Description>Contains shared infrastructure components and cross-cutting concerns for microservices and other reusable setup utilities.</Description>
 	 <PackageTags>background jobs;message broker;cors;outbox;shared;infrastructure</PackageTags>
    </PropertyGroup>
