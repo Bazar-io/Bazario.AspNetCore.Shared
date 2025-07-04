@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Bazario.AspNetCore.Shared.Options;
+using System.Security.Claims;
 
 namespace Bazario.AspNetCore.Shared.Authentication.DependencyInjection
 {
@@ -73,8 +74,8 @@ namespace Bazario.AspNetCore.Shared.Authentication.DependencyInjection
                 ValidIssuer = jwtSettings.Issuer,
                 ValidAudience = jwtSettings.Audience,
                 IssuerSigningKey = signingKey,
-                ClockSkew = TimeSpan.Zero,
                 ValidAlgorithms = [jwtSettings.SecurityAlgorithm],
+                RoleClaimType = ClaimTypes.Role
             };
         }
     }
