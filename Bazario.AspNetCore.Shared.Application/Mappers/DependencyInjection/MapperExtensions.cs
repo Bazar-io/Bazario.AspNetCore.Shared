@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Bazario.AspNetCore.Shared.Abstractions.Mappers;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace Bazario.AspNetCore.Shared.Application.Mappers.DependencyInjection

@@ -4,8 +4,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<Authors>clowd1e</Authors>
     <Company>Bazario</Company>
 	<RepositoryUrl>https://github.com/Bazar-io/Bazario.AspNetCore.Shared</RepositoryUrl>
+
+	<DebugType>portable</DebugType>
+	<EmbedAllSources>true</EmbedAllSources>
+	<IncludeSymbols>true</IncludeSymbols>
+	<IncludeSource>true</IncludeSource>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<NoWarn>$(NoWarn);1591</NoWarn> <!--Suppress warning CS1591-->
   </PropertyGroup>
 
   <PropertyGroup>
