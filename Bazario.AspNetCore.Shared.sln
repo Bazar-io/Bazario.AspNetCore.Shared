@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bazario.AspNetCore.Shared.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bazario.AspNetCore.Shared.Api", "Bazario.AspNetCore.Shared.Api\Bazario.AspNetCore.Shared.Api.csproj", "{17DFCED2-343F-4A4D-81A1-40F5001E5174}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bazario.AspNetCore.Shared.ArchitectureTests", "Bazario.AspNetCore.Shared.ArchitectureTests\Bazario.AspNetCore.Shared.ArchitectureTests.csproj", "{232F63E1-3E3A-4A04-B559-50CF750A8D7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -158,6 +160,18 @@ Global
 		{17DFCED2-343F-4A4D-81A1-40F5001E5174}.Release|x64.Build.0 = Release|Any CPU
 		{17DFCED2-343F-4A4D-81A1-40F5001E5174}.Release|x86.ActiveCfg = Release|Any CPU
 		{17DFCED2-343F-4A4D-81A1-40F5001E5174}.Release|x86.Build.0 = Release|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Debug|x64.Build.0 = Debug|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Debug|x86.Build.0 = Debug|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Release|x64.ActiveCfg = Release|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Release|x64.Build.0 = Release|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Release|x86.ActiveCfg = Release|Any CPU
+		{232F63E1-3E3A-4A04-B559-50CF750A8D7B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
