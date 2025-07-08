@@ -211,6 +211,9 @@ PublishScripts/
 # Allow .nupkg files in the NuGetPackages folder
 !**/[Nn]uGetPackages/**/*.nupkg
 
+# Allow .snupkg files in the NuGetPackages folder
+!**/[Nn]uGetPackages/**/*.snupkg
+
 # Microsoft Azure Build Output
 csx/
 *.build.csdef
