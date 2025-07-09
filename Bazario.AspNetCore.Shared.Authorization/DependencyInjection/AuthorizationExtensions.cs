@@ -6,6 +6,12 @@ namespace Bazario.AspNetCore.Shared.Authorization.DependencyInjection
 {
     public static class AuthorizationExtensions
     {
+        /// <summary>
+        /// Configures the authorization policies for the application.
+        /// </summary>
+        /// <remarks>Configures authorization policies based on <see cref="Permission"/> enum 
+        /// and corresponding <see cref="Role"/> enum.</remarks>
+        /// <param name="services">Service collection to which the authorization policies will be added.</param>
         public static IServiceCollection ConfigureAuthorization(
             this IServiceCollection services)
         {
