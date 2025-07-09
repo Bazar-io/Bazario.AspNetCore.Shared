@@ -11,6 +11,10 @@ namespace Bazario.AspNetCore.Shared.Authentication.DependencyInjection
 {
     public static class AuthenticationExtensions
     {
+        /// <summary>
+        /// Configures JWT Bearer authentication for the application.
+        /// </summary>
+        /// <param name="services">Service collection to configure authentication.</param>
         public static IServiceCollection ConfigureAuthentication(
             this IServiceCollection services)
         {

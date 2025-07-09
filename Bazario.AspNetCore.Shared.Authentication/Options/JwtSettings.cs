@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Bazario.AspNetCore.Shared.Authentication.Options
 {
+    /// <summary>
+    /// Represents settings for JWT authentication.
+    /// </summary>
     public class JwtSettings : IAppOptions
     {
         public const string SectionName = nameof(JwtSettings);
