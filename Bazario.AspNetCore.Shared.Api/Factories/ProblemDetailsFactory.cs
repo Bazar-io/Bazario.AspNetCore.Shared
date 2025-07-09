@@ -6,6 +6,11 @@ using System.Diagnostics;
 
 namespace Bazario.AspNetCore.Shared.Api.Factories
 {
+    /// <summary>
+    /// Factory for creating <see cref="ProblemDetails"/> based on the provided <see cref="Result"/>.
+    /// </summary>
+    /// <remarks>Requires <see cref="IHttpContextAccessor" /> provided in service collection 
+    /// to access the current HTTP context and activity features.</remarks>
     public class ProblemDetailsFactory
     {
         private readonly IHttpContextAccessor _contextAccessor;
@@ -15,6 +20,15 @@ namespace Bazario.AspNetCore.Shared.Api.Factories
             _contextAccessor = contextAccessor;
         }
 
+        /// <summary>
+        /// Creates a <see cref="ProblemDetails"/> object based on the provided <see cref="Result"/>.
+        /// </summary>
+        /// <param name="result">Result containing error information to be converted into a <see cref="ProblemDetails"/> object.</param>
+        /// <returns>
+        /// <see cref="IActionResult"/> containing the <see cref="ProblemDetails"/> object if the result is not successful."/>
+        /// </returns>
+        /// <exception cref="InvalidOperationException">Thrown if the result is successful, indicating that 
+        /// a problem details response should not be created.</exception>
         public IActionResult GetProblemDetails(Result result)
         {
             if (result.IsSuccess)

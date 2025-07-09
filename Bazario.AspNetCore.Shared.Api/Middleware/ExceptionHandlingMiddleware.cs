@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace Bazario.AspNetCore.Shared.Api.Middleware
 {
+    /// <summary>
+    /// Middleware for handling exceptions in the request pipeline.
+    /// </summary>
     public sealed class ExceptionHandlingMiddleware
     {
         private readonly RequestDelegate _next;
@@ -20,6 +22,13 @@ namespace Bazario.AspNetCore.Shared.Api.Middleware
             _logger = logger;
         }
 
+        /// <summary>
+        /// Invokes the middleware to handle exceptions that occur during request processing.
+        /// </summary>
+        /// <param name="httpContext">
+        /// The <see cref="HttpContext"/> for the current request. This context is used to 
+        /// log errors and return <see cref="StatusCodes.Status500InternalServerError"/> error.
+        /// </param>
         public async Task Invoke(HttpContext httpContext)
         {
             try
