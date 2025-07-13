@@ -42,7 +42,7 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker
                 .CreateChannelAsync(cancellationToken: stoppingToken);
 
             var routingKey = KebabCaseFormater.ToKebabCase<TMessage>();
-            var uniqueQueueName = $"{routingKey}-{Guid.NewGuid()}";
+            var uniqueQueueName = $"{routingKey}-{_exchangeTypeSettings.ServiceIdentifier ?? Guid.NewGuid().ToString()}";
             await DeclareDestinationAsync(_channel, routingKey, uniqueQueueName, stoppingToken);
 
             var consumer = new AsyncEventingBasicConsumer(_channel);

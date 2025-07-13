@@ -6,11 +6,14 @@ namespace Bazario.AspNetCore.Shared.Infrastructure.MessageBroker.Options
         where TMessage : class
     {
         public MessageBrokerExchangeType ExchangeType { get; private set; } = MessageBrokerExchangeType.Direct;
+        public string? ServiceIdentifier { get; set; }
 
         public MessageConsumerExchangeTypeSettings(
-            MessageBrokerExchangeType exchangeType)
+            MessageBrokerExchangeType exchangeType,
+            string? serviceIdentifier = null)
         {
             ExchangeType = exchangeType;
+            ServiceIdentifier = serviceIdentifier;
         }
     }
 }
