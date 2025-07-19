@@ -2,13 +2,19 @@
 
   <PropertyGroup>
 	<PackageId>Bazario.AspNetCore.Shared.Api</PackageId>
-	<Version>1.0.0</Version>
+	<Version>1.1.0</Version>
 	<Description>Shared class library for api related concerns in Bazario ASP.NET Core applications.</Description>
 	<PackageTags>problem details;middleware;api;shared;</PackageTags>
   </PropertyGroup>
 	
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageReference Include="Serilog.Expressions" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
   </ItemGroup>
 	
   <ItemGroup>
