@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<PackageId>Bazario.AspNetCore.Shared.Authorization</PackageId>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
 		<Description>Shared authorization base classes for Bazario ASP.NET Core applications.</Description>
 		<PackageTags>authorization;shared;</PackageTags>
 	</PropertyGroup>
@@ -12,8 +12,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="9.0.6" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
 	</ItemGroup>
 
 	<ItemGroup>

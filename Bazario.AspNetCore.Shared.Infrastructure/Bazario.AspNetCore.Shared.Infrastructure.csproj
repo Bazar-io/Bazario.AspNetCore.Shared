@@ -2,7 +2,7 @@
 
    <PropertyGroup>
 	 <PackageId>Bazario.AspNetCore.Shared.Infrastructure</PackageId>
-	 <Version>1.4.4</Version>
+	 <Version>1.4.5</Version>
 	 <Description>Contains shared infrastructure components and cross-cutting concerns for microservices and other reusable setup utilities.</Description>
 	 <PackageTags>background jobs;message broker;cors;outbox;shared;infrastructure</PackageTags>
    </PropertyGroup>
@@ -10,7 +10,7 @@
   <ItemGroup>
 	<PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.3.0" />
 	<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
-	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.6" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Quartz" Version="3.14.0" />
     <PackageReference Include="Quartz.Extensions.Hosting" Version="3.14.0" />

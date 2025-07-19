@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<PackageId>Bazario.AspNetCore.Shared.ArchitectureTests</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Description>Shared class library for architecture tests in Bazario ASP.NET Core applications.</Description>
 		<PackageTags>architecture;shared;</PackageTags>
 		
@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FluentAssertions" Version="8.4.0" />
+		<PackageReference Include="FluentAssertions" Version="8.5.0" />
 		<PackageReference Include="FluentValidation" Version="12.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<DevelopmentDependency>true</DevelopmentDependency>
