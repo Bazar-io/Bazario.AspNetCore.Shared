@@ -1,5 +1,8 @@
 ﻿namespace Bazario.AspNetCore.Shared.Results
 {
+    /// <summary>
+    /// Represents the type of error that can occur during operations in the application.
+    /// </summary>
     public enum ErrorType
     {
         InternalFailure = 0,
